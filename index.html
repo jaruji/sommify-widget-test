@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>Sommify widget integration test</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="">
+<style>
+</style>
+<script src=""></script>
+<head>
+    <script src="https://elements.sommify.ai/js/v1"></script>
+</head>
+<body>
+
+<script>
+    const widget = Sommify.createWidget({
+        apiKey: 'somm-5c169bff-c78f-4ba2-a578-69c3739ac3ae',             // your API key
+        limit: 4,                           // limit the amount of wines to show
+        triggerRadius: 50,                  // the radius in pixels from the trigger element
+        triggerPosition: 'bottom-rigth',    // the position of the trigger element
+        blockerVisible: true,               // show the blocker element
+        localization: "cs",
+        // define mobile specific behavior
+        mobile: {
+          fullscreen: true,
+        },
+      });
+      
+      widget.onAddToCart((wine) => {
+        // add logic to execute when add to cart button is clicked
+      });
+      
+      // mount the widget using the Sommify.mount function
+      widget.mount();
+</script>
+
+<div class="">
+ <h1>This is a Heading</h1>
+ <p>This is a paragraph.</p>
+ <p>This is another paragraph.</p>
+</div>
+
+</body>
+</html>
