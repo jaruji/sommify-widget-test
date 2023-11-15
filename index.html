@@ -1,34 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta charset="UTF-8">
-<title>Sommify widget integration test</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="">
-<style>
-</style>
-<script src=""></script>
 <head>
+    <meta charset="UTF-8">
+    <title>Widget integration test for XX</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        #demo-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
     <script src="https://elements.sommify.ai/js/v1"></script>
 </head>
 <body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
+    function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,    
+        function(m,key,value) {
+          vars[key] = value;
+        });
+        return vars;
+      }
+
     const widget = Sommify.createWidget({
-      apiKey: 'somm-1d373d9d-8375-4791-a0fc-cbdbd0db7903',
-      limit: 3,
-      blockerVisible: true,
-      localization: 'cs',
-      currency: 'CZK'
+        apiKey: getUrlVars()["apiKey"] || "tmp",
+        limit: 3,
+        blockerVisible: true,
+        localization: getUrlVars()["localization"] || "en",
+        currency: 'EUR'
     });
 
-    widget.onAddToCart(wine => window.open(wine.url, 'blank_'))
-
+    widget.onAddToCart(wine => window.open(wine.url, 'blank_'));
     widget.mount();
-  </script>
-
-<div class="">
- <h1>Try our demo</h1>
+</script>
+<div class="container">
+    <h1>Welcome to Our Wine Shop</h1>
+    <p>Explore our fine selection of wines and try our sommelier</p>
 </div>
-
 </body>
 </html>
